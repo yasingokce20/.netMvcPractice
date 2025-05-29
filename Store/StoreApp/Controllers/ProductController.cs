@@ -17,19 +17,24 @@ namespace StoreApp.Controllers
         {
             var model = _Context.Products.ToList();
             return View(model);
-        } 
-        
-/*         public IEnumerable<Product> Index()
-                        {
-                            // DI olmasa idi bu şekilde alırdık
-                            // var context = new RepositoryContext(
-                            //     new DbContextOptionsBuilder<RepositoryContext>()
-                            //     .UseSqlite("Data Source = C:\\Users\\yasin\\Desktop\\MVC\\Store\\Product.db")
-                            //     .Options);
+        }
 
-                            return _Context.Products;
-                        } */
+        /*         public IEnumerable<Product> Index()
+                                {
+                                    // DI olmasa idi bu şekilde alırdık
+                                    // var context = new RepositoryContext(
+                                    //     new DbContextOptionsBuilder<RepositoryContext>()
+                                    //     .UseSqlite("Data Source = C:\\Users\\yasin\\Desktop\\MVC\\Store\\Product.db")
+                                    //     .Options);
+
+                                    return _Context.Products;
+                                } */
 
 
+        public IActionResult Get(int id)
+        {
+            Product product = _Context.Products.First(p => p.ProductId.Equals(id));
+            return View(product);
+        }
     }
 }
