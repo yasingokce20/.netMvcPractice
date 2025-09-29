@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using Entities.Models;
 
 namespace StoreApp.Models
 {
     public class RepositoryContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product>? Products { get; set; }
 
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         { }
