@@ -1,9 +1,9 @@
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using Entities.Models;
 
-namespace StoreApp.Models
-{
-    public class RepositoryContext : DbContext
+namespace Repositories;
+
+public class RepositoryContext : DbContext  
     {
         public DbSet<Product>? Products { get; set; }
 
@@ -23,4 +23,3 @@ namespace StoreApp.Models
             );
         }
     }
-}
