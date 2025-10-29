@@ -1,6 +1,7 @@
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
+using Repositories.Contracts;
 
 
 namespace StoreApp.Controllers
@@ -8,15 +9,16 @@ namespace StoreApp.Controllers
     public class ProductController : Controller
     {
         //DI Consepts
-        private readonly RepositoryContext _Context;
-        public ProductController(RepositoryContext Context)
-        {
-            _Context = Context;
-        }
+        private readonly IRepositoryManager _manager;
 
+        public ProductController(IRepositoryManager manager)
+        {
+            _manager = manager;
+        }
+        
         public IActionResult Index()
         {
-            var model = _Context.Products.ToList();
+            var model = _manager.Product.GetAllProducts(false);      
             return View(model);
         }
 
@@ -34,8 +36,8 @@ namespace StoreApp.Controllers
 
         public IActionResult Get(int id)
         {
-            Product product = _Context.Products.First(p => p.ProductId.Equals(id));
-            return View(product);
+            //Product product = _Context.Products.First(p => p.ProductId.Equals(id));
+            throw new NotImplementedException();
         }
     }
 }
