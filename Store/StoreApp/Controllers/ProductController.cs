@@ -15,10 +15,10 @@ namespace StoreApp.Controllers
         {
             _manager = manager;
         }
-        
+
         public IActionResult Index()
         {
-            var model = _manager.Product.GetAllProducts(false);      
+            var model = _manager.Product.GetAllProducts(false);
             return View(model);
         }
 
